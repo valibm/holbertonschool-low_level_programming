@@ -1,1 +1,1 @@
-0-Makefile - containes all rule inside wich builds executable for school.
+This directory containes files related to the Makefiles project.
