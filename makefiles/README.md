@@ -1,0 +1,1 @@
+0-Makefile - containes all rule inside wich builds executable for school.
