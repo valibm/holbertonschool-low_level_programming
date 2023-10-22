@@ -7,21 +7,21 @@
  */
 int main(void)
 {
-	int adress;
-	int ad_stager;
-	int ad_stager2;
+	int hundreds;
+	int tens;
+	int ones;
 
-	for (adress = 48; adress < 55; adress++)
+	for (hundreds = 48; hundreds < 56; hundreds++)
 	{
-		for (ad_stager = adress + 1; ad_stager <= 56; ad_stager++)
+		for (tens = hundreds + 1; tens <= 56; tens++)
 		{
-			for (ad_stager2 = ad_stager + 1; ad_stager <= 57;
-			     ad_stager2++)
+			for (ones = tens + 1; ones <= 57;
+			     ones++)
 			{
-				putchar(adress);
-				putchar(ad_stager);
-				putchar(ad_stager2);
-				if (adress == 54)
+				putchar(hundreds);
+				putchar(tens);
+				putchar(ones);
+				if (hundreds == 55)
 				{
 					break;
 				}
