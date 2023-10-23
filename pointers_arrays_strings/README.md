@@ -1,0 +1,1 @@
+This directory containes files related to Project called C - Pointers, arrays and strings for holberton.
