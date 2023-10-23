@@ -3,14 +3,14 @@
  *  terminating null byte (\0), to the buffer pointed to by dest.
  * @dest: string that receives src's content.
  * @src: source string that's being copied.
- * Return: Always 0.
+ * Return: Pointer to dest..
  */
 
 char *_strcpy(char *dest, char *src)
 {
 	char *temp = dest;
 
-	while (*src)
+	while (*src != '\0')
 	{
 		*dest++ = *src++;
 	}
