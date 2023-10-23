@@ -1,6 +1,6 @@
 /**
  * rev_string - Is a function that reverses a string.
- * @s - string that's being reversed.
+ * @s: string that's being reversed.
  * Return: Void.
  */
 void rev_string(char *s)
