@@ -13,6 +13,11 @@ char *cap_string(char *str)
 
 	for (i = 0; str[i] != '\0'; i++)
 	{
+		if (str[i] == 0 && str[i + 1] >= 97 && str[i + 1] <= 122)
+		{
+			str[i] = str[i] - 32;
+		}
+
 		if (check_seperators(str[i]) &&
 		    str[i + 1] >= 97 && str[i + 1] <= 122)
 		{
