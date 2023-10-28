@@ -1,5 +1,5 @@
 /**
- * strspn - Is a function that gets the length of a prefix substring.
+ * _strspn - Is a function that gets the length of a prefix substring.
  * @s: main (checked) string.
  * @accept: prefix substring.
  * Return: number of bytes in the initial segment of s which consist
