@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 {
 	int n, i, sum = 0;
 
-        while (argc-- > 1)
+	while (argc-- > 1)
 	{
 		for (i = 0; argv[argc][i]; i++)
 		{
