@@ -4,47 +4,39 @@
 int str_len(char *str);
 
 /**
- * main - check the code
- *
- * Return: Always 0.
+ * str_concat - Is a function that concatenates two strings.
+ * @s1: base string.
+ * @s2: string to be concatanated.
+ * Return: NULL on failure, concatanated string otherwise.
  */
 char *str_concat(char *s1, char *s2)
 {
 	char *con_str;
-	int len1 = str_len(s1), len2 = str_len(s2), i, j;
+	int i, s1_len, s2_len;
 
 	if (s1 == NULL)
-	{
-		con_str = malloc((sizeof(*s2) * len2) + sizeof(*s2));
-		for (i = 0; s2[i] != '\0'; i++)
-		{
-			*(con_str + i) = s2[i];
-		}
-		return (con_str);
-	}
-	else if (s2 == NULL)
-	{
-		con_str = malloc((sizeof(*s1) * len1) + sizeof(*s1));
-		for (i = 0; s1[i] != '\0'; i++)
-		{
-			*(con_str + i) = s1[i];
-		}
-		return (con_str);
-	}
+		s1_len = 0;
 	else
+		s1_len = str_len(s1);
+	if (s2 == NULL)
+		s2_len = 0;
+	else
+		s2_len = str_len(s2);
+	con_str = malloc(s1_len * sizeof(char)
+			 + s2_len * sizeof(char) + sizeof(char));
+	if (con_str == NULL)
 	{
-		con_str = malloc((sizeof(*s1) * len1) +
-				 (sizeof(*s2) * len2) + sizeof(*s2));
-		for (i = 0; s1[i] != '\0'; i++)
-		{
-			*(con_str + i) = s1[i];
-		}
-		for (j = 0; s2[j] != '\0'; j++)
-		{
-			*(con_str + (i + 1 + j)) = s2[j];
-		}
-		return (con_str);
+		return (NULL);
 	}
+	for (i = 0; i < s1_len + s2_len; i++)
+	{
+		if (i < s1_len)
+			con_str[i] = s1[i];
+		else
+			con_str[i] = s2[i - s1_len];
+	}
+	con_str[i] = '\0';
+	return (con_str);
 }
 
 /**
