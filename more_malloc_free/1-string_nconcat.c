@@ -13,62 +13,32 @@ int str_len(char *str, unsigned int *n);
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
 	char *con_str;
-	int i, j, s1_len, s2_len;
+	unsigned int i, s1_len = 0, s2_len = 0;
 
 	if (s1 == NULL)
-		s1_len = 0;
-	else
-		s1_len = str_len(s1, NULL);
+		s1 = "";
+	while (s1[s1_len])
+		s1_len++;
+
 	if (s2 == NULL)
-		s2_len = 0;
-	else
-		s2_len = str_len(s2, &n);
-	con_str = malloc((s1_len + s2_len) * sizeof(char) + sizeof(char));
+		s2 = "";
+	while (s2[s2_len])
+		s2_len++;
+
+	if (n >= s2_len)
+		n = s2_len;
+
+	con_str = malloc((s1_len + n + 1) * sizeof(char));
 	if (con_str == NULL)
 		return (NULL);
-	for (i = 0; i < s1_len + s2_len; i++)
+
+	for (i = 0; i < s1_len + n; i++)
 	{
 		if (i < s1_len)
-		{
-			con_str[i] = s1[i];
-		}
+			con_str[i] = *s1, s1++;
 		else
-		{
-			for (j = 0; j < s2_len; j++)
-			{
-				con_str[i] = s2[j];
-				i++;
-			}
-		}
+			con_str[i] = *s2, s2++;
 	}
 	con_str[i] = '\0';
 	return (con_str);
-}
-
-/**
- * str_len - Measures string's length.
- * @str: string to be measured.
- * @n: length of first n bytes of str.
- * Return: null if str == null, length of string otherwise.
- */
-int str_len(char *str, unsigned int *n)
-{
-	unsigned int i, len = 0;
-
-        if (n == NULL)
-	{
-		for (i = 0; str[i] != '\0'; i++)
-		{
-			len++;
-		}
-	}
-	else
-	{
-		for (i = 0; str[i] != '\0' || i < *n; i++)
-		{
-			len++;
-		}
-	}
-
-	return (len);
 }
