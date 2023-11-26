@@ -15,13 +15,15 @@ int main(int argc, char *argv[])
 
 	if (argc != 4)
 	{
-		return (1);
+		printf("Error\n");
+		exit(98);
 	}
 
 	func = get_op_func(argv[2]);
 	if (func == NULL)
 	{
-		return (1);
+		printf("Error\n");
+		exit(99);
 	}
 
 	printf("%d\n", func(atoi(argv[1]), atoi(argv[3])));
