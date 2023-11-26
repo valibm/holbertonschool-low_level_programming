@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+char *_strcopy(char *dest, char *src);
+
 /**
  * new_dog - It creates a new dog structure
  * @name: name of dog
@@ -12,41 +14,49 @@
 dog_t *new_dog(char *name, float age, char *owner)
 {
 	dog_t *new_dog;
-	char *name_cpy, *owner_cpy;
-	int name_len = 0, owner_len = 0, i;
 
 	if (name == NULL || owner == NULL)
 		return (NULL);
 
-	name_len = strlen(name);
-	owner_len = strlen(owner);
 	new_dog = malloc(sizeof(dog_t));
 	if (new_dog == NULL)
 	{
-		free(new_dog);
 		return (NULL);
 	}
-	name_cpy = malloc((name_len + 1) * sizeof(char));
-	if (name_cpy == NULL)
+        new_dog->name = malloc((strlen(name) + 1) * sizeof(char));
+	if (new_dog->name == NULL)
 	{
 		free(new_dog);
-		free(name_cpy);
 		return (NULL);
 	}
-	for (i = 0; name[i] != '\0'; i++)
-		name_cpy[i] = name[i];
-	owner_cpy = malloc((owner_len + 1) * sizeof(char));
-	if (owner_cpy == NULL)
+        new_dog->owner = malloc((strlen(owner) + 1) * sizeof(char));
+	if (new_dog->owner == NULL)
 	{
 		free(new_dog);
-		free(name_cpy);
-		free(owner_cpy);
+		free(new_dog->name);
 		return (NULL);
 	}
-	for (i = 0; owner[i] != '\0'; i++)
-		owner_cpy[i] = owner[i];
-	new_dog->name = name_cpy;
+
+	new_dog->name = _strcopy(new_dog->name, name);
 	new_dog->age = age;
-	new_dog->owner = owner_cpy;
+	new_dog->owner = _strcopy(new_dog->owner, owner);
 	return (new_dog);
+}
+
+/**
+ * _strcopy - Is a function that copies a string pointed to by src.
+ * @dest: coppied string.
+ * @src: The source string.
+ * Return: pointer to the coppied string.
+ */
+char *_strcopy(char *dest, char *src)
+{
+	int i = 0;
+
+	for (i = 0; src[i]; i++)
+		dest[i] = src[i];
+
+	dest[i] = '\0';
+
+	return (dest);
 }
