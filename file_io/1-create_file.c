@@ -3,7 +3,7 @@
 #include <fcntl.h>
 
 /**
- * 1-create_file.c - Is a function that creates a file.
+ * create_file - Is a function that creates a file.
  * @filename: Name of the file.
  * @text_content: Content to written inside the file.
  * Return: 1 on success, -1 on failure.
